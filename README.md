@@ -157,7 +157,8 @@ used loss function. YOLO had MAP built into it, but DETR did not. Additionally, 
 the future, we aim to develop more thorough metrics for an enhanced comparability of the data.
 Additionally, we hope to train on a larger set of data. In this case, given the limited time and complexity of the
 problem at hand as well as limited resources, the data set used was only of 100 driving car videos, 80 for training and
-20 for testing. If presented with more time for more training, the mAP scores for both models could be expected to
+20 for testing. If presented with more time for more training (e.g. more epochs of training on a larger training set of videos),
+the mAP scores for both models could be expected to
 improve significantly, as more training data could be expected to reduce the bias of the model’s performance.
 Beyond improving metrics and training, we also would hope to expand upon the optical flow heuristic. Currently,
 optical flow does not improve time, which we believe is due to frequent use of the chosen model. To get the true benefits
