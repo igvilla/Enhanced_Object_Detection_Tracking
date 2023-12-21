@@ -88,7 +88,7 @@ After pre-processing the data into the appropriate format for DETR, we loaded th
 from Facebook via the pytorch hub. As described above, we used bipartite matching loss for training and evaluation
 of DETR, as is done in literature. Before training on the model for fine tuning, we input our test data into the model
 to obtain a baseline loss for comparison. We then trained on DETR, using a maximum number of queries of 65 and
-a batch size for the dataset of 8. This was chosen due to a maximum of 45 bounding boxes within the training data,
+a batch size for the dataset of 80. This was chosen due to a maximum of 45 bounding boxes within the training data,
 plus room for some more boxes to be detected for test. Our training fine tunes the pre-trained DETR model to work
 specifically for our traffic video dataset, and we aimed to observed a reduction in loss. After training the DETR model
 to minimize the loss function described above, we use the fine tuned model for test-set object detection, as well as to be
