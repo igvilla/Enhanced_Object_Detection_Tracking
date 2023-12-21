@@ -14,6 +14,11 @@ efficiency, it actually appears to have improved accuracy with no change to mode
 situations with high object movement. This study is pivotal in identifying the most effective model and heuristic combination,
 promising to enhance the reliability and safety of autonomous driving systems.
 
+### NOTE: 
+This information (along with usefu images and tables) can be found in the attached written report for the project, 
+"Enhanced_Object_Detection_Tracking.pdf". Please refer to this document for a detailed description and explanation of the project.
+
+
 ## Data
 
 We worked with the “Driving Video with Object Tracking” dataset, which is a subset of the
@@ -22,7 +27,8 @@ bounding box in every frame (sampled at 5hz from 30hz) for each video. From this
 80 for training and 20 for testing. Each set had an even distribution of object labels. The labels included: car, pedestrian,
 truck, bus, bicycle, rider, other vehicle, motorcycle, other person, trailer, and train. However, due to ambiguity in some
 labels, we consolidated our labels into: car, person, truck, bus, bicycle, motorcycle, and train. Trailer and other vehicle
-were dropped due to poor labeling and infrequency, such as a grocery shopping cart being labeled ”other vehicle.”
+were dropped due to poor labeling and infrequency, such as a grocery shopping cart being labeled ”other vehicle.” 
+
 
 ## Data Cleaning
 
@@ -36,6 +42,9 @@ employed the Iterative Stratification library, accessible at this GitHub reposit
 the training data, including hue and brightness variations, grayscale conversion, and flipping. Test data were kept simple with 
 resizing and tensor conversion. A normalization step was also introduced to centralize bounding box coordinates
 and scale them according to image dimensions, enhancing the quality and consistency of the input data for our models.
+
+Some of the initial data preprocessing steps can be seen in the "preprocessing.ipynb" notebook, while additional data manipulation steps
+are performed in each of the individual notebooks as well for training of the models. 
 
 ## Performance Metrics
 
@@ -70,7 +79,8 @@ the bounding box predictions in order to optimize a distribution of bounding box
 
 As mentioned, YOLO was initially run on the test set of videos before finetuning the model
 weights to our specific use case of video data. This initial performance, as expected, was slightly worse than what was
-obtained after training. This initial mean average precision (mAP) improved from 0.122 to 0.17.
+obtained after training. This initial mean average precision (mAP) improved from 0.122 to 0.17. All steps discussed for the training 
+and validation of YOLO on the dataset can be found in the "yolo_v8.ipynb" notebook. 
 
 ### DETR
 
@@ -86,15 +96,17 @@ incorporated into the optical flow heuristic.
 
 The DETR model without finetuning performed very poorly on the dataset and was unable to
 identify bounding boxes for object detection. After finetuning, we saw a notable improvement in performance, with the
-loss decreasing from 3.45 to 0.88.
+loss decreasing from 3.45 to 0.88. All steps discussed for the training 
+and validation of YOLO on the dataset can be found in the "yolo_v8.ipynb" notebook. 
 
 ### Optical Flow Integration
 
 Optical flow is computed using the opencv library in Python. We computed the
 trajectory of a bounding box from one image to the next using the four corner points of the box. This integrates the
-sequential nature of video data into predictions.
+sequential nature of video data into predictions. Initial testing of optical flow on the dataset can be encountered in the 
+"optical_flow.ipynb" notebook. 
 
-We designed a heuristic for full video data to integrate with the chosen models. This differs from standalone DETR
+A heuristic was designed for full video data to integrate with the chosen models. This differs from standalone DETR
 or YOLO, which predict on a frame of a video. The general goal of this is to use the chosen model as little as possible.
 We want to reduce the overall computational cost by limiting the need to execute the chosen model (YOLO or DETR),
 so optical flow can be used to track bounding box movement instead. After a certain number of frames of just optical
@@ -114,7 +126,9 @@ improving the mAP from 0.17 to 0.2896. DETR improved by far less (0.39 to 0.407)
 We also chose to explore model time complexity by exploring each of the models for one video in the data set. This
 was done to mimic a real-time model, which is just one ”video” with object detection. We used the same video, which
 had 101 frames (sub-sampled from a 20 second video), across each models, finding the MAP and timing for each model.
-As expected, YOLO performed better in terms of speed, both with and without optical flow integration. 
+As expected, YOLO performed better in terms of speed, both with and without optical flow integration. The integration of DETR with 
+optical flow can be found in the "model_optical_flow_combined.ipynb" notebook, while integration of optical flow with YOLO is found
+in the same notebook used for validation and testing of YOLO alone, "yolo_v8.ipynb".
 
 Finally, we can see a clear understanding of the success of our DETR and YOLO models on object detection as they
 occur in sampled images. Both DETR and YOLO predictions actually match up well with the
