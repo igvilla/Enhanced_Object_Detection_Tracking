@@ -48,7 +48,7 @@ are performed in each of the individual notebooks as well for training of the mo
 
 ## Performance Metrics
 
-To optimize the matching of predicted and ground truth objects, we adopt a bipartite matching loss as depicted in 1.
+To optimize the matching of predicted and ground truth objects, we adopt a bipartite matching loss.
 This loss function allows for an optimal one-to-one assignment between predictions and ground truths, minimizing
 misclassifications and improving localization accuracy. The dataset comprises 100 videos, partitioned into an 80-20
 split for training and testing, respectively, with frames meticulously extracted for processing.
