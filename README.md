@@ -27,7 +27,7 @@ bounding box in every frame (sampled at 5hz from 30hz) for each video. From this
 80 for training and 20 for testing. Each set had an even distribution of object labels. The labels included: car, pedestrian,
 truck, bus, bicycle, rider, other vehicle, motorcycle, other person, trailer, and train. However, due to ambiguity in some
 labels, we consolidated our labels into: car, person, truck, bus, bicycle, motorcycle, and train. Trailer and other vehicle
-were dropped due to poor labeling and infrequency, such as a grocery shopping cart being labeled ”other vehicle.” 
+were dropped due to poor labeling and infrequency, such as a grocery shopping cart being labeled ”other vehicle” in the dataset.
 
 
 ## Data Cleaning
