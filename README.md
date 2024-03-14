@@ -97,7 +97,7 @@ incorporated into the optical flow heuristic.
 The DETR model without finetuning performed very poorly on the dataset and was unable to
 identify bounding boxes for object detection. After finetuning, we saw a notable improvement in performance, with the
 loss decreasing from 3.45 to 0.88. All steps discussed for the training 
-and validation of YOLO on the dataset can be found in the "detr-3.ipynb" notebook. 
+and validation of DETR on the dataset can be found in the "detr-3.ipynb" notebook. 
 
 ### Optical Flow Integration
 
