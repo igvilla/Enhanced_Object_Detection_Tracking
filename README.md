@@ -15,7 +15,7 @@ situations with high object movement. This study is pivotal in identifying the m
 promising to enhance the reliability and safety of autonomous driving systems.
 
 ### NOTE: 
-This information (along with usefu images and tables) can be found in the attached written report for the project, 
+This information (along with useful images and tables) can be found in the attached written report for the project, 
 "Enhanced_Object_Detection_Tracking.pdf". Please refer to this document for a detailed description and explanation of the project.
 
 
